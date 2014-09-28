@@ -517,6 +517,15 @@ static void cb_flash(struct usb_ep *ep, struct usb_request *req)
 static void cb_oem(struct usb_ep *ep, struct usb_request *req)
 {
 	char *cmd = req->buf;
+#if defined(CONFIG_TEGRA124)
+	struct pmc_ctlr *pmc = (struct pmc_ctlr *)NV_PA_PMC_BASE;
+	if (strncmp("recovery", cmd + 4, 8) == 0) {
+		printf("Setting reboot-recovery!\n");
+		writel(readl(&pmc->pmc_scratch0) | (1 << 31), &pmc->pmc_scratch0);
+		fastboot_func->in_req->complete = compl_do_reset;
+		fastboot_tx_write_str("OKAY");
+	} else
+#endif
 	if (strncmp("unlock", cmd + 4, 8) == 0) {
 		fastboot_tx_write_str("FAILnot implemented");
 	}
