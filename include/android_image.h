@@ -31,7 +31,8 @@ struct andr_img_hdr {
 
 	u32 tags_addr;		/* physical addr for kernel tags */
 	u32 page_size;		/* flash page size we assume */
-	u32 unused[2];		/* future expansion: should be 0 */
+	u32 dt_size;		/* device tree in bytes */
+	u32 unused;		/* future expansion: should be 0 */
 
 	char name[ANDR_BOOT_NAME_SIZE]; /* asciiz product name */
 
