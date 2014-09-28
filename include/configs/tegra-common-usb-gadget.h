@@ -15,8 +15,14 @@
 #define CONFIG_CI_UDC
 #define CONFIG_CI_UDC_HAS_HOSTPC
 #define CONFIG_USB_GADGET_DUALSPEED
+#ifdef CONFIG_CMD_FASTBOOT
+/* Use Google fastboot vid/pid */
+#define CONFIG_G_DNL_VENDOR_NUM 0x18d1
+#define CONFIG_G_DNL_PRODUCT_NUM 0x0100
+#else
 #define CONFIG_G_DNL_VENDOR_NUM 0x0955
 #define CONFIG_G_DNL_PRODUCT_NUM 0x701A
+#endif
 #define CONFIG_G_DNL_MANUFACTURER "NVIDIA"
 #define CONFIG_USBDOWNLOAD_GADGET
 /* USB mass storage protocol */
