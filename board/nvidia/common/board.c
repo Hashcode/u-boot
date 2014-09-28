@@ -205,6 +205,26 @@ int board_late_init(void)
 	warmboot_prepare_code(TEGRA_LP0_ADDR, TEGRA_LP0_SIZE);
 #endif
 
+#ifdef CONFIG_TEGRA124
+	struct pmc_ctlr *pmc = (struct pmc_ctlr *)NV_PA_PMC_BASE;
+	unsigned int scratch = readl(&pmc->pmc_scratch0);
+
+	writel(scratch & ~(1 << 30) & ~(1 << 31), &pmc->pmc_scratch0);
+	if (scratch & (1 << 30)) {
+		printf("Found reboot-mode = bootloader!\n");
+		setenv("recovery", "0");
+		do_fastboot(NULL, 0, 0, NULL);
+	}
+	else if (scratch & (1 << 31)) {
+		printf("Found reboot-mode = recovery!\n");
+		setenv("recovery", "1");
+	}
+	else {
+		printf("No reboot-mode found\n");
+		setenv("recovery", "0");
+	}
+#endif
+
 	return 0;
 }
 
