@@ -23,6 +23,11 @@
 #ifdef CONFIG_FASTBOOT_FLASH_MMC_DEV
 #include <fb_mmc.h>
 #endif
+#if defined(CONFIG_TEGRA124)
+#include <asm/io.h>
+#include <asm/arch-tegra/pmc.h>
+#include <android_image.h>
+#endif
 
 #define FASTBOOT_VERSION		"0.4"
 
@@ -319,6 +324,18 @@ static void compl_do_reset(struct usb_ep *ep, struct usb_request *req)
 
 static void cb_reboot(struct usb_ep *ep, struct usb_request *req)
 {
+#if defined(CONFIG_TEGRA124)
+	char *cmd = req->buf;
+	struct pmc_ctlr *pmc = (struct pmc_ctlr *)NV_PA_PMC_BASE;
+	if (strncmp("-bootloader", cmd + 6, 11) == 0) {
+		printf("Setting reboot-bootloader!\n");
+		writel(readl(&pmc->pmc_scratch0) | (1 << 30), &pmc->pmc_scratch0);
+	}
+	else if (strncmp("-recovery", cmd + 6, 9) == 0) {
+		printf("Setting reboot-recovery!\n");
+		writel(readl(&pmc->pmc_scratch0) | (1 << 31), &pmc->pmc_scratch0);
+	}
+#endif
 	fastboot_func->in_req->complete = compl_do_reset;
 	fastboot_tx_write_str("OKAY");
 }
