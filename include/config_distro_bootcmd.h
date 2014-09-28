@@ -28,6 +28,25 @@
 #define BOOTENV_DEV_NAME_BLKDEV(devtypeu, devtypel, instance) \
 	#devtypel #instance " "
 
+#ifdef CONFIG_CMD_BOOTAI
+#define BOOTENV_DEV_BLKDEV_ANDROID(devtypeu, devtypel, instance) \
+	"bootcmd_" #devtypel #instance "=" \
+		"if mmc dev " #instance "; " \
+		"then setenv devtype mmc; " \
+		"setenv devnum " #instance "; " \
+		"bootai " #instance "; fi\0"
+
+#define BOOTENV_SHARED_ANDROID
+#define BOOTENV_DEV_ANDROID		BOOTENV_DEV_BLKDEV_ANDROID
+#define BOOTENV_DEV_NAME_ANDROID	BOOTENV_DEV_NAME_BLKDEV
+#else
+#define BOOTENV_SHARED_ANDROID
+#define BOOTENV_DEV_ANDROID \
+	BOOT_TARGET_DEVICES_references_ANDROID_without_CONFIG_CMD_BOOTAI
+#define BOOTENV_DEV_NAME_ANDROID \
+	BOOT_TARGET_DEVICES_references_ANDROID_without_CONFIG_CMD_BOOTAI
+#endif
+
 #ifdef CONFIG_CMD_MMC
 #define BOOTENV_SHARED_MMC	BOOTENV_SHARED_BLKDEV(mmc)
 #define BOOTENV_DEV_MMC		BOOTENV_DEV_BLKDEV
