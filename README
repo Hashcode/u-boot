@@ -958,6 +958,7 @@ The following options need to be configured:
 		CONFIG_CMD_BEDBUG	* Include BedBug Debugger
 		CONFIG_CMD_BMP		* BMP support
 		CONFIG_CMD_BSP		* Board specific commands
+		CONFIG_CMD_BOOTAI	* Android bootimg support
 		CONFIG_CMD_BOOTD	  bootd
 		CONFIG_CMD_BOOTI	* ARM64 Linux kernel Image support
 		CONFIG_CMD_CACHE	* icache, dcache
