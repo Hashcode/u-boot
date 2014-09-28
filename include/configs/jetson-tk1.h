@@ -95,6 +95,23 @@
 #define CONFIG_CMD_NET
 #define CONFIG_CMD_DHCP
 
+/* Fastboot support */
+#define CONFIG_CMD_FASTBOOT
+
+#ifdef CONFIG_CMD_FASTBOOT
+#define CONFIG_ANDROID_BOOT_IMAGE
+#define CONFIG_CMD_BOOTAI
+#define CONFIG_CMD_BOOTAI_IGNORE_HDR_ADDR
+#define MEMORY_BASE                     0x80000000
+#define CONFIG_ADDR_DOWNLOAD            (MEMORY_BASE + 0x04000000)
+#define CONFIG_USB_FASTBOOT_BUF_ADDR	CONFIG_ADDR_DOWNLOAD
+#define CONFIG_USB_FASTBOOT_BUF_SIZE	0x40000000
+#define CONFIG_FASTBOOT_FLASH
+#define CONFIG_FASTBOOT_FLASH_MMC_DEV	0
+#define BOARD_EXTRA_ENV_SETTINGS \
+	"bootargs_append=pmuboard=0x0177:0x0000:0x02:0x43:0x00 otf_key=c75e5bb91eb3bd947560357b64422f85 board_info=0x0177:0x0000:0x02:0x43:0x00\0"
+#endif
+
 #include "tegra-common-usb-gadget.h"
 #include "tegra-common-post.h"
 
