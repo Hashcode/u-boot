@@ -9,12 +9,24 @@
 #define __TEGRA_COMMON_POST_H
 
 #ifndef CONFIG_SPL_BUILD
+#ifdef CONFIG_CMD_BOOTAI
+#define CONFIG_CMD_BOOTAI_BOOT_PART	"LNX"
+#define CONFIG_CMD_BOOTAI_RECOVERY_PART	"SOS"
+#define BOOT_TARGET_DEVICES(func) \
+	func(MMC, mmc, 1) \
+	func(ANDROID, android, 0) \
+	func(MMC, mmc, 0) \
+	func(USB, usb, 0) \
+	func(PXE, pxe, na) \
+	func(DHCP, dhcp, na)
+#else
 #define BOOT_TARGET_DEVICES(func) \
 	func(MMC, mmc, 1) \
 	func(MMC, mmc, 0) \
 	func(USB, usb, 0) \
 	func(PXE, pxe, na) \
 	func(DHCP, dhcp, na)
+#endif
 #include <config_distro_bootcmd.h>
 #else
 #define BOOTENV
