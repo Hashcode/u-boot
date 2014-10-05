@@ -18,29 +18,35 @@ config TARGET_ORIGEN
 config TARGET_TRATS2
 	bool "Exynos4412 Trat2 board"
 
+config TARGET_ODROID
+	bool "Exynos4412 Odroid board"
+
 config TARGET_ARNDALE
 	bool "Exynos5250 Arndale board"
+	select OF_CONTROL if !SPL_BUILD
 
 config TARGET_SMDK5250
 	bool "SMDK5250 board"
+	select OF_CONTROL if !SPL_BUILD
 
 config TARGET_SNOW
 	bool "Snow board"
+	select OF_CONTROL if !SPL_BUILD
 
 config TARGET_SMDK5420
 	bool "SMDK5420 board"
+	select OF_CONTROL if !SPL_BUILD
 
 config TARGET_PEACH_PIT
 	bool "Peach Pi board"
+	select OF_CONTROL if !SPL_BUILD
 
 endchoice
 
 config SYS_CPU
-	string
 	default "armv7"
 
 config SYS_SOC
-	string
 	default "exynos"
 
 source "board/samsung/smdkv310/Kconfig"
@@ -48,6 +54,7 @@ source "board/samsung/trats/Kconfig"
 source "board/samsung/universal_c210/Kconfig"
 source "board/samsung/origen/Kconfig"
 source "board/samsung/trats2/Kconfig"
+source "board/samsung/odroid/Kconfig"
 source "board/samsung/arndale/Kconfig"
 source "board/samsung/smdk5250/Kconfig"
 source "board/samsung/smdk5420/Kconfig"

@@ -94,6 +94,8 @@ enum fdt_compat_id {
 	COMPAT_SANDBOX_LCD_SDL,		/* Sandbox LCD emulation with SDL */
 	COMPAT_TI_TPS65090,		/* Texas Instrument TPS65090 */
 	COMPAT_NXP_PTN3460,		/* NXP PTN3460 DP/LVDS bridge */
+	COMPAT_SAMSUNG_EXYNOS_SYSMMU,	/* Exynos sysmmu */
+	COMPAT_PARADE_PS8625,		/* Parade PS8622 EDP->LVDS bridge */
 
 	COMPAT_COUNT,
 };
@@ -373,6 +375,18 @@ int fdtdec_get_alias_seq(const void *blob, const char *base, int node,
  * @return Node offset referred to by that alias, or -ve FDT_ERR_...
  */
 int fdtdec_get_alias_node(const void *blob, const char *name);
+
+/**
+ * Get the offset of the given chosen node
+ *
+ * This looks up a property in /chosen containing the path to another node,
+ * then finds the offset of that node.
+ *
+ * @param blob		Device tree blob (if NULL, then error is returned)
+ * @param name		Property name, e.g. "stdout-path"
+ * @return Node offset referred to by that chosen node, or -ve FDT_ERR_...
+ */
+int fdtdec_get_chosen_node(const void *blob, const char *name);
 
 /*
  * Get the name for a compatible ID

@@ -1,14 +1,14 @@
 dtb-$(CONFIG_EXYNOS4) += exynos4210-origen.dtb \
 	exynos4210-universal_c210.dtb \
 	exynos4210-trats.dtb \
-	exynos4412-trats2.dtb
+	exynos4412-trats2.dtb \
+	exynos4412-odroid.dtb
 
 dtb-$(CONFIG_EXYNOS5) += exynos5250-arndale.dtb \
 	exynos5250-snow.dtb \
 	exynos5250-smdk5250.dtb \
 	exynos5420-smdk5420.dtb \
 	exynos5420-peach-pit.dtb
-dtb-$(CONFIG_MX6) += imx6q-sabreauto.dtb
 dtb-$(CONFIG_TEGRA) += tegra20-harmony.dtb \
 	tegra20-medcom-wide.dtb \
 	tegra20-paz00.dtb \

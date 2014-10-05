@@ -15,8 +15,6 @@
 
 #define CONFIG_SYS_PROMPT	"Trats2 # "	/* Monitor Command Prompt */
 
-#undef CONFIG_DEFAULT_DEVICE_TREE
-#define CONFIG_DEFAULT_DEVICE_TREE	exynos4412-trats2
 
 #define CONFIG_TIZEN			/* TIZEN lib */
 
@@ -240,8 +238,5 @@ int get_soft_i2c_sda_pin(void);
 #define CONFIG_EXYNOS_MIPI_DSIM
 #define CONFIG_VIDEO_BMP_GZIP
 #define CONFIG_SYS_VIDEO_LOGO_MAX_SIZE ((500 * 160 * 4) + 54)
-
-#define LCD_XRES	720
-#define LCD_YRES	1280
 
 #endif	/* __CONFIG_H */

@@ -31,19 +31,19 @@
 #define CONFIG_DM_DEMO_SHAPE
 #define CONFIG_DM_GPIO
 #define CONFIG_DM_TEST
+#define CONFIG_DM_SERIAL
+
+#define CONFIG_SYS_STDIO_DEREGISTER
 
 /* Number of bits in a C 'long' on this architecture */
 #define CONFIG_SANDBOX_BITS_PER_LONG	64
 
-#define CONFIG_OF_CONTROL
-#define CONFIG_OF_HOSTFILE
 #define CONFIG_OF_LIBFDT
 #define CONFIG_LMB
 #define CONFIG_FIT
 #define CONFIG_FIT_SIGNATURE
 #define CONFIG_RSA
 #define CONFIG_CMD_FDT
-#define CONFIG_DEFAULT_DEVICE_TREE	sandbox
 #define CONFIG_ANDROID_BOOT_IMAGE
 
 #define CONFIG_FS_FAT

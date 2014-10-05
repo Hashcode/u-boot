@@ -70,6 +70,8 @@ static const char * const compat_names[COMPAT_COUNT] = {
 	COMPAT(SANDBOX_LCD_SDL, "sandbox,lcd-sdl"),
 	COMPAT(TI_TPS65090, "ti,tps65090"),
 	COMPAT(COMPAT_NXP_PTN3460, "nxp,ptn3460"),
+	COMPAT(SAMSUNG_EXYNOS_SYSMMU, "samsung,sysmmu-v3.3"),
+	COMPAT(PARADE_PS8625, "parade,ps8625"),
 };
 
 const char *fdtdec_get_compatible(enum fdt_compat_id id)
@@ -375,6 +377,21 @@ int fdtdec_get_alias_node(const void *blob, const char *name)
 		return -FDT_ERR_NOTFOUND;
 	alias_node = fdt_path_offset(blob, "/aliases");
 	prop = fdt_getprop(blob, alias_node, name, &len);
+	if (!prop)
+		return -FDT_ERR_NOTFOUND;
+	return fdt_path_offset(blob, prop);
+}
+
+int fdtdec_get_chosen_node(const void *blob, const char *name)
+{
+	const char *prop;
+	int chosen_node;
+	int len;
+
+	if (!blob)
+		return -FDT_ERR_NOTFOUND;
+	chosen_node = fdt_path_offset(blob, "/chosen");
+	prop = fdt_getprop(blob, chosen_node, name, &len);
 	if (!prop)
 		return -FDT_ERR_NOTFOUND;
 	return fdt_path_offset(blob, prop);

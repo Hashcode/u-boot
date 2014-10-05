@@ -272,7 +272,7 @@ board. This allows feature development which is not board- or architecture-
 specific to be undertaken on a native platform. The sandbox is also used to
 run some of U-Boot's tests.
 
-See board/sandbox/sandbox/README.sandbox for more details.
+See board/sandbox/README.sandbox for more details.
 
 
 Configuration Options:
@@ -3860,11 +3860,8 @@ Configuration Settings:
 		The memory will be freed (or in fact just forgotton) when
 		U-Boot relocates itself.
 
-		Pre-relocation malloc() is only supported on sandbox
+		Pre-relocation malloc() is only supported on ARM and sandbox
 		at present but is fairly easy to enable for other archs.
-
-		Pre-relocation malloc() is only supported on ARM at present
-		but is fairly easy to enable for other archs.
 
 - CONFIG_SYS_BOOTM_LEN:
 		Normally compressed uImages are limited to an

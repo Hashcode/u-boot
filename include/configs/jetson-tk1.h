@@ -20,10 +20,9 @@
 #define CONFIG_TEGRA124_LP0
 #endif
 
-/* Enable fdt support for Jetson TK1. Flash the image in u-boot-dtb.bin */
-#define CONFIG_DEFAULT_DEVICE_TREE	tegra124-jetson-tk1
-#define CONFIG_OF_CONTROL
-#define CONFIG_OF_SEPARATE
+/* ft_board_setup() provides a hook for U-Boot to overwrite some
+ * properties in DT file which will be passed to kernel.
+ */
 #define CONFIG_OF_LIBFDT
 #define CONFIG_OF_BOARD_SETUP
 
