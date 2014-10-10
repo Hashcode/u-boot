@@ -108,7 +108,20 @@
 #define CONFIG_FASTBOOT_FLASH
 #define CONFIG_FASTBOOT_FLASH_MMC_DEV	0
 #define BOARD_EXTRA_ENV_SETTINGS \
-	"bootargs_append=pmuboard=0x0177:0x0000:0x02:0x43:0x00 otf_key=c75e5bb91eb3bd947560357b64422f85 board_info=0x0177:0x0000:0x02:0x43:0x00\0"
+	"bootargs_append=" \
+	"init=init console=ttyS0,115200n8 " \
+	"lp0_vec=2064@0xf46ff000 mem=1862M@2048M vpr=151M@3945M tsec=32M@3913M " \
+	"core_edp_mv=1150 core_edp_ma=4000 " \
+	"tegraid=40.1.1.0.0 tegra_fbmem=32899072@0xad012000 fbcon=map:1 " \
+	"video=tegrafb memtype=255 ddr_die=2048M@2048M section=256M " \
+	"debug_uartport=lsport,3 " \
+	"power_supply=Adapter audio_codec=rt5640 " \
+	"modem_id=0 commchip_id=0 " \
+	"usbcore.old_scheme_first=1 usb_port_owner_info=0 " \
+	"lane_owner_info=6 emc_max_dvfs=0 touch_id=0@0 " \
+	"pmuboard=0x0177:0x0000:0x02:0x43:0x00 " \
+	"otf_key=c75e5bb91eb3bd947560357b64422f85 " \
+	"board_info=0x0177:0x0000:0x02:0x43:0x00\0"
 #endif
 
 #include "tegra-common-usb-gadget.h"
