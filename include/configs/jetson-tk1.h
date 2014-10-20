@@ -16,6 +16,11 @@
 
 #include "tegra124-common.h"
 
+#ifdef CONFIG_SYS_MALLOC_LEN
+#undef CONFIG_SYS_MALLOC_LEN
+#endif
+#define CONFIG_SYS_MALLOC_LEN		(128 << 20)	/* 128MB for fastboot bounce_buffer  */
+
 #ifdef CONFIG_TEGRA_LP0
 #define CONFIG_TEGRA124_LP0
 #endif
