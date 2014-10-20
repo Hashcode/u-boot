@@ -27,7 +27,9 @@
 #define CONFIG_OF_BOARD_SETUP
 #define CONFIG_MISC_INIT_R		/* call misc_init_r during start up */
 
-#define CONFIG_SERIAL_TAG
+#define CONFIG_SETUP_MEMORY_TAGS	1
+#define CONFIG_INITRD_TAG		1
+#define CONFIG_SERIAL_TAG		1
 
 /* The following are used to retrieve the board id from an eeprom */
 #define CONFIG_SERIAL_EEPROM
@@ -103,7 +105,7 @@
 #define CONFIG_CMD_BOOTAI
 #define CONFIG_CMD_BOOTAI_IGNORE_HDR_ADDR
 #define MEMORY_BASE                     0x80000000
-#define CONFIG_ADDR_DOWNLOAD            (MEMORY_BASE + 0x04000000)
+#define CONFIG_ADDR_DOWNLOAD            (MEMORY_BASE + 0x12000000)
 #define CONFIG_USB_FASTBOOT_BUF_ADDR	CONFIG_ADDR_DOWNLOAD
 #define CONFIG_USB_FASTBOOT_BUF_SIZE	0x40000000
 #define CONFIG_FASTBOOT_FLASH
