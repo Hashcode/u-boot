@@ -332,7 +332,13 @@ static int tegra_mmc_send_cmd(struct mmc *mmc, struct mmc_cmd *cmd,
 		}
 		len = data->blocks * data->blocksize;
 
-		bounce_buffer_start(&bbstate, buf, len, bbflags);
+		ret = bounce_buffer_start(&bbstate, buf, len, bbflags);
+		if (ret) {
+			printf("%s: bounce_buffer_start failed with error %d "
+				"(buf = %p, len = %u, flags = %u)\n",
+				__func__, ret, buf, len, bbflags);
+			return ret;
+		}
 	}
 
 	ret = mmc_send_cmd_bounced(mmc, cmd, data, &bbstate);
