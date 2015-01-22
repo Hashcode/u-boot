@@ -683,8 +683,8 @@ static int sleep_thread(struct fsg_common *common)
 				return -EPIPE;
 
 			/* Check cable connection */
-			if (!g_dnl_board_usb_cable_connected())
-				return -EIO;
+			//if (!g_dnl_board_usb_cable_connected())
+			//	return -EIO;
 
 			k = 0;
 		}

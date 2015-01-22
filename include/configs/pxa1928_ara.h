@@ -84,6 +84,10 @@
 #define CONFIG_USB_FASTBOOT_BUF_SIZE    0x20000000
 #define CONFIG_FASTBOOT_FLASH
 #define CONFIG_FASTBOOT_FLASH_MMC_DEV	0
+
+#define CONFIG_CMD_USB_MASS_STORAGE
+#define CONFIG_USB_GADGET_MASS_STORAGE
+
 /*
  * mv-common.h should be defined after CMD configs since it used them
  * to enable certain macros

@@ -15,6 +15,7 @@ e* (C) Copyright 2011
 #include <mv_recovery.h>
 #include <asm/arch/mfp.h>
 #include <malloc.h>
+#include <usb.h>
 #include <power/pmic.h>
 #include <power/marvell88pm_pmic.h>
 #include <power/pxa1928_freq.h>
@@ -104,6 +105,11 @@ int board_early_init_f(void)
 	};
 	mfp_config(mfp_cfg);
 	return 0;
+}
+
+int board_usb_init(int index, enum usb_init_type init)
+{
+        return 0;
 }
 
 int g_dnl_board_usb_cable_connected(void)
