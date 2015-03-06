@@ -484,8 +484,9 @@ static void do_bootm_on_complete(struct usb_ep *ep, struct usb_request *req)
 	char *bootm_args[] = { "bootai", "ram", boot_addr_start, NULL };
 #else
 	char *bootm_args[] = { "bootm", boot_addr_start, boot_addr_start,
-		"${fdt_addr_r}", NULL };
+		NULL, NULL };
 #endif
+	bootm_args[3] = getenv("fdt_addr_r");
 
 	puts("Booting kernel..\n");
 
@@ -493,8 +494,8 @@ static void do_bootm_on_complete(struct usb_ep *ep, struct usb_request *req)
 	sprintf(boot_addr_start, "0x%x", CONFIG_USB_FASTBOOT_BUF_ADDR);
 	do_bootai(NULL, 0, 3, bootm_args);
 #else
-	sprintf(boot_addr_start, "0x%lx", load_addr);
-	do_bootm(NULL, 0, 2, bootm_args);
+	sprintf(boot_addr_start, "0x%lx", CONFIG_USB_FASTBOOT_BUF_ADDR);
+	do_bootm(NULL, 0, 4, bootm_args);
 #endif
 
 	/* This only happens if image is somehow faulty so we start over */
