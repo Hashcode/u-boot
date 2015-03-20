@@ -100,16 +100,10 @@ int board_early_init_f(void)
 		GPIO15_MFP15,
 		/* 2A Charge enable */
 		GPIO118_MFP118,
-		/* BG_POWER_EN */
-		GPIO120_MFP120,
 		/*End of configureation*/
 		MFP_EOC
 	};
 	mfp_config(mfp_cfg);
-
-	/* Need to drive GPIO120 high to assert BG_POWER_EN */
-	gpio_direction_output(120,1);
-
 	return 0;
 }
 
