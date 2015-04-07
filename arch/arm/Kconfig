@@ -204,6 +204,9 @@ config TARGET_PXA1928DKB
 config TARGET_PXA1928ARA
 	bool "Marvell PXA1928 Ara AP"
 
+config TARGET_PXA1928HELIUM
+	bool "Marvell PXA1928 Helium"
+
 config TARGET_DKB
 	bool "Support dkb"
 
@@ -577,6 +580,7 @@ source "board/Marvell/dkb/Kconfig"
 source "board/Marvell/gplugd/Kconfig"
 source "board/Marvell/pxa1928_concord/Kconfig"
 source "board/Marvell/pxa1928_ara/Kconfig"
+source "board/Marvell/pxa1928_helium/Kconfig"
 source "board/afeb9260/Kconfig"
 source "board/altera/socfpga/Kconfig"
 source "board/armadeus/apf27/Kconfig"

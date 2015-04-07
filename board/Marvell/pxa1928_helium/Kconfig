@@ -1,0 +1,23 @@
+if TARGET_PXA1928HELIUM
+
+config SYS_CPU
+	string
+	default "armv8"
+
+config SYS_BOARD
+	string
+	default "pxa1928_helium"
+
+config SYS_VENDOR
+	string
+	default "Marvell"
+
+config SYS_SOC
+	string
+	default "pxa1928"
+
+config SYS_CONFIG_NAME
+	string
+	default "pxa1928_helium"
+
+endif
