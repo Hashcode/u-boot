@@ -63,6 +63,11 @@ static int highperf;
 int board_early_init_f(void)
 {
 	u32 mfp_cfg[] = {
+		/* UART1 */
+		UART1_RXD_GPIO51_MFP51,
+		UART1_TXD_GPIO52_MFP52,
+		UART1_CTS_GPIO53_MFP53,
+		UART1_RTS_GPIO54_MFP54,
 		/* UART3 */
 		UART3_RXD_MMC2_DAT7_MFP33,
 		UART3_TXD_MMC2_DAT6_MFP34,
